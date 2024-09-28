@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('permissaos', function (Blueprint $table) {
+        Schema::create('permissao', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('tipousuario_id');
+            $table->foreign('tipousuario_id')->references('id')->on('tipousuario');
+            $table->unsignedBigInteger('formulario_id');
+            $table->foreign('formulario_id')->references('id')->on('formulario');
+            $table->boolean('inclui');
+            $table->boolean('altera');
+            $table->boolean('exclui');
         });
     }
 
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permissaos');
+        Schema::dropIfExists('permissao');
     }
 };
