@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoRisco extends Model
 {
+    protected $table = 'tiporisco';
+    protected $fillable = [
+        'nome',
+    ];
     use HasFactory;
 }
